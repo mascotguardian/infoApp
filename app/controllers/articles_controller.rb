@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  def index
+    @articles = Article.all
+  end
+
   def new
     @article = Article.new
   end
@@ -25,6 +29,7 @@ def update
     flash[:notice] = "Article was updated"
     redirect_to article_path(@article)
   else
+    flash[:notice] = "Article was not updated"
     render 'edit'
   end
 end
